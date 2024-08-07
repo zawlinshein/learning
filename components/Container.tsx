@@ -6,7 +6,7 @@ type Props = PropsWithChildren;
 const Container: FC<Props> = ({ children }) => {
   return (
     <View style={styles.container}>
-      <ScrollView>{children}</ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>{children}</ScrollView>
     </View>
   );
 };
