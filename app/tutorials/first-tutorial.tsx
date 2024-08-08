@@ -19,7 +19,7 @@ const FirstTutorial = () => {
   };
 
   return (
-    <TutorialContainer lesson={1}>
+    <TutorialContainer lesson={1} about="Basic usage">
       <Animated.View style={{ ...styles.box, width }}></Animated.View>
 
       <Btn text="press me" onPress={handlePress} />

@@ -28,7 +28,7 @@ const SecondTutorial = () => {
   };
 
   return (
-    <TutorialContainer lesson={2}>
+    <TutorialContainer lesson={2} about="Using useAnimatedStyle()">
       <Animated.View style={[globalStyles.box, animatedStyles]}></Animated.View>
       <Btn text="press me" onPress={handlePress} />
       <Btn text="reset" onPress={reset} />

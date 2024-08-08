@@ -22,18 +22,9 @@ const HomePage = () => {
       <View style={{ gap: 24 }}>
         <FirstTutorial />
         <SecondTutorial />
-        {/* <ThirdTutorial /> */}
-        <View style={{ marginBottom: 12 }}>
-          <View style={{ flexDirection: "row" }}>
-            <Text>Lesson 3 </Text>
-            <Text style={{ color: "red" }}>
-              ( react-native-svg is causing error )
-            </Text>
-          </View>
-          <Text>- animated props ( with react native svg )</Text>
-        </View>
+        <ThirdTutorial />
+        <FourthTutorial />
       </View>
-      <FourthTutorial width={320} />
     </Container>
   );
 };

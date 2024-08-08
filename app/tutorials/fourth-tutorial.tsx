@@ -1,34 +1,33 @@
+import Btn from "@/components/Btn";
 import TutorialContainer from "@/components/TutorialContainer";
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, useWindowDimensions } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
   Easing,
   withRepeat,
+  withSpring,
 } from "react-native-reanimated";
 
 const duration = 2000;
 
-interface AppProps {
-  width: number;
-}
+export default function FourthTutorial() {
+  const { width } = useWindowDimensions();
 
-export default function FourthTutorial({ width }: AppProps) {
-  const defaultAnim = useSharedValue<number>(width / 2 - 160);
-  const linear = useSharedValue<number>(width / 2 - 160);
+  const linear = useSharedValue<number>(width - 280);
+  const inOut = useSharedValue<number>(width - 280);
 
-  const animatedDefault = useAnimatedStyle(() => ({
-    transform: [{ translateX: defaultAnim.value }],
+  const animatedInOut = useAnimatedStyle(() => ({
+    transform: [{ translateX: inOut.value }],
   }));
-  const animatedChanged = useAnimatedStyle(() => ({
-    transform: [{ translateX: linear.value }],
+  const animatedLinear = useAnimatedStyle(() => ({
+    transform: [{ translateX: -linear.value }],
   }));
 
   React.useEffect(() => {
     linear.value = withRepeat(
-      // highlight-next-line
       withTiming(-linear.value, {
         duration,
         easing: Easing.linear,
@@ -36,10 +35,10 @@ export default function FourthTutorial({ width }: AppProps) {
       -1,
       true
     );
-    defaultAnim.value = withRepeat(
-      // highlight-next-line
-      withTiming(-defaultAnim.value, {
+    inOut.value = withRepeat(
+      withTiming(-inOut.value, {
         duration,
+        easing: Easing.inOut(Easing.quad),
       }),
       -1,
       true
@@ -47,15 +46,13 @@ export default function FourthTutorial({ width }: AppProps) {
   }, []);
 
   return (
-    <TutorialContainer lesson={4}>
-      <View>
-        <Animated.View style={[styles.box, animatedDefault]}>
-          <Text style={styles.text}>inout</Text>
-        </Animated.View>
-        <Animated.View style={[styles.box, animatedChanged]}>
-          <Text style={styles.text}>linear</Text>
-        </Animated.View>
-      </View>
+    <TutorialContainer lesson={4} about="Using Modifier">
+      <Animated.View style={[styles.box, animatedInOut]}>
+        <Text style={styles.text}>inout</Text>
+      </Animated.View>
+      <Animated.View style={[styles.box, animatedLinear]}>
+        <Text style={styles.text}>linear</Text>
+      </Animated.View>
     </TutorialContainer>
   );
 }
