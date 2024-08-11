@@ -46,7 +46,7 @@ export default function FourthTutorial() {
   }, []);
 
   return (
-    <TutorialContainer lesson={4} about="Using Modifier">
+    <TutorialContainer lesson={4} about="Customizing animations">
       <Animated.View style={[styles.box, animatedInOut]}>
         <Text style={styles.text}>inout</Text>
       </Animated.View>

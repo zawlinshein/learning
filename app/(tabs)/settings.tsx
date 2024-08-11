@@ -1,11 +1,20 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import Btn from "@/components/Btn";
 
 const SettingPage = () => {
+  const [count, setCount] = useState(0);
+
   return (
-    <View>
-      <Text style={{ color: "white" }}>SettingPage</Text>
-    </View>                                                                                                      
+    <View style={{}}>
+      <Text style={{ color: "black" }}>{count}</Text>
+      <Btn
+        text="count "
+        onPress={() => {
+          setCount(count + 1);
+        }}
+      />
+    </View>
   );
 };
 

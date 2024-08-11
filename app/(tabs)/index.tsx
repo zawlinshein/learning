@@ -15,6 +15,7 @@ import SecondTutorial from "../tutorials/second-tutorial";
 import globalStyles from "@/constants/globalStyes";
 import ThirdTutorial from "../tutorials/third-tutorial";
 import FourthTutorial from "../tutorials/fourth-tutorial";
+import FifthTutorial from "../tutorials/fifth-tutorial";
 
 const HomePage = () => {
   return (
@@ -24,6 +25,7 @@ const HomePage = () => {
         <SecondTutorial />
         <ThirdTutorial />
         <FourthTutorial />
+        <FifthTutorial />
       </View>
     </Container>
   );
