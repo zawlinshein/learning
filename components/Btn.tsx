@@ -1,37 +1,43 @@
+import { ThemeProvider } from "@/app/_layout";
+import React, { forwardRef, useContext } from "react";
 import {
-  Button,
-  ButtonProps,
   StyleSheet,
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
-  View,
 } from "react-native";
-import React, { FC } from "react";
 
 type Props = TouchableOpacityProps & {
   text: string;
 };
 
-const Btn: FC<Props> = ({ text, style, ...other }) => {
-  return (
-    <TouchableOpacity style={[styles.btn, style]} {...other}>
-      <Text style={styles.text}>{text}</Text>
-    </TouchableOpacity>
-  );
-};
+const Btn = forwardRef<TouchableOpacity, Props>(
+  ({ text, style, ...other }, ref) => {
+    const theme = useContext(ThemeProvider);
+
+    const styles = useStyle(theme?.theme);
+
+    return (
+      <TouchableOpacity style={[styles.btn, style]} {...other} ref={ref}>
+        <Text style={styles.text}>{text}</Text>
+      </TouchableOpacity>
+    );
+  }
+);
 
 export default Btn;
 
-const styles = StyleSheet.create({
-  btn: {
-    width: "100%",
-    backgroundColor: "black",
-    padding: 12,
-    borderRadius: 16,
-  },
-  text: {
-    color: "white",
-    textAlign: "center",
-  },
-});
+const useStyle = (theme: "light" | "dark" = "light") => {
+  return StyleSheet.create({
+    btn: {
+      width: "100%",
+      backgroundColor: theme === "light" ? "black" : "white",
+      padding: 12,
+      borderRadius: 16,
+    },
+    text: {
+      color: theme === "light" ? "white" : "black",
+      textAlign: "center",
+    },
+  });
+};

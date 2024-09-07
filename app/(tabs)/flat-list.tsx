@@ -1,15 +1,8 @@
 import Container from "@/components/Container";
-import React, { FC, useCallback, useState } from "react";
-import {
-  FlatList,
-  ScrollView,
-  StyleSheet,
-  View,
-  ViewToken,
-} from "react-native";
+import React, { FC } from "react";
+import { StyleSheet, View, ViewToken } from "react-native";
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import Animated, {
-  runOnJS,
   SharedValue,
   useAnimatedStyle,
   useSharedValue,
@@ -63,34 +56,34 @@ const itemSeparatorComponent: FC = () => {
 };
 
 const AnimatedFlatList = () => {
-  const viewableItems = useSharedValue<
-    ViewToken<{
-      id: number;
-    }>[]
-  >([]);
+  // const viewableItems = useSharedValue<
+  //   ViewToken<{
+  //     id: number;
+  //   }>[]
+  // >([]);
 
-  const [data, setData] = useState(
-    new Array(50).fill(0).map((_, index) => ({ id: index, offsetX: 0 }))
-  );
+  // const [data, setData] = useState(
+  //   new Array(50).fill(0).map((_, index) => ({ id: index, offsetX: 0 }))
+  // );
 
-  const handleChange = useCallback((id: number, offsetX: number) => {
-    setData((prevData) =>
-      prevData.map((item) => {
-        if (item.id === id) {
-          return { ...item, offsetX };
-        }
-        return item;
-      })
-    );
-  }, []);
+  // const handleChange = useCallback((id: number, offsetX: number) => {
+  //   setData((prevData) =>
+  //     prevData.map((item) => {
+  //       if (item.id === id) {
+  //         return { ...item, offsetX };
+  //       }
+  //       return item;
+  //     })
+  //   );
+  // }, []);
 
   return (
     <Container noPadding>
-      <ScrollView contentContainerStyle={styles.contentContainerStyle}>
+      {/* <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         {data.map((item) => {
           return <List item={item} viewableItems={viewableItems} />;
         })}
-      </ScrollView>
+      </ScrollView> */}
       {/* <FlatList
         data={data}
         renderItem={({ item }) => {
