@@ -16,17 +16,21 @@ import globalStyles from "@/constants/globalStyes";
 import ThirdTutorial from "../tutorials/third-tutorial";
 import FourthTutorial from "../tutorials/fourth-tutorial";
 import FifthTutorial from "../tutorials/fifth-tutorial";
+import SixthTutorial from "../tutorials/SixthTutorial";
 
 const HomePage = () => {
   return (
     <Container>
-      <View style={{ gap: 24 }}>
-        <FirstTutorial />
-        <SecondTutorial />
-        <ThirdTutorial />
-        <FourthTutorial />
-        <FifthTutorial />
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={{ gap: 24 }}>
+          <FirstTutorial />
+          <SecondTutorial />
+          <ThirdTutorial />
+          <FourthTutorial />
+          <FifthTutorial />
+          <SixthTutorial />
+        </View>
+      </ScrollView>
     </Container>
   );
 };

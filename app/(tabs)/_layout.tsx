@@ -18,6 +18,12 @@ const TabLayout = () => {
           title: "Settings",
         }}
       />
+      <Tabs.Screen
+        name="flat-list"
+        options={{
+          title: "Animated Flat List",
+        }}
+      />
     </Tabs>
   );
 };
